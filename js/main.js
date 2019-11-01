@@ -64,6 +64,16 @@ class BasketList  {
     return this.render();
   }
 
+  checkItems2(art){
+    for (let i = 0; i < this.basket.length; i++) {
+      if (this.basket[i].id === art) {
+        //если есть добавляет количество товара
+        this.basket[i].quantity--;
+        return this.render();
+      }
+    }
+  }
+
   addItem(content){
     return this.basket.push(content);
   }
@@ -139,7 +149,7 @@ document.getElementById('basket').addEventListener('click', (event) => {
   } else if (event.target.classList.contains('diminish')){
     for (const key of items.items) {
       if (+event.target.parentNode.dataset.art === key.id) {
-        const subtotal = basket.addQuantityDiminish(key.id);
+        const subtotal = basket.checkItems2(key.id);
         if (subtotal !== false) {
           basketOut.innerHTML = subtotal;
         }
