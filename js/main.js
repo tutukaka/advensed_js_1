@@ -6,12 +6,12 @@ class ItemsList  {
   }
 
   fetchItems() {
-    this.items = [
-      { id: 21566, title: 'Mouse', price: 400, img: 'mouse.jpg', quantity: 1 },
-      { id: 22563, title: 'Notebook', price: 20000, img: 'notebook.jpg', quantity: 1 },
-      { id: 23766, title: 'Keyboard', price: 5000, img: 'keyboard.jpg', quantity: 1 },
-      { id: 24526, title: 'Gamepad', price: 4500, img: 'gamepad.jpg', quantity: 1 },
-    ]}
+    return fetch('/goods')
+        .then(response => response.json())
+        .then((items) => {
+          this.items = items;
+        })
+  }
 
   render() {
     return this.items.map((item) => new Item(item.title, item.price, item.img, item.id)
@@ -36,11 +36,12 @@ class Item {
             <button class="button catalog__item_button" type="button">добавить</button></div>`
   }
 }
-const items = new ItemsList ();
-items.fetchItems();
 
+const items = new ItemsList ();
 const catalog = document.querySelector('.catalog');
-catalog.innerHTML = items.render();
+items.fetchItems().then(() => {
+  catalog.innerHTML = items.render();
+});
 
 class BasketList  {
   constructor() {
