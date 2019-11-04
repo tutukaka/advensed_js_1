@@ -29,5 +29,20 @@
       "quantity": 1
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": 22563,
+      "title": "Notebook",
+      "price": 20000,
+      "img": "notebook.jpg",
+      "quantity": 5
+    },
+    {
+      "id": 23766,
+      "title": "Keyboard",
+      "price": 5000,
+      "img": "keyboard.jpg",
+      "quantity": 5
+    }
+  ]
 }
