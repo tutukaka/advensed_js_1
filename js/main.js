@@ -7,6 +7,7 @@ json-server --watch db.json --port 3012 --static ./
 */
 class ItemsList  {
   constructor() {
+    this.catalog = document.querySelector('.catalog');
     this.items = [];
   }
 
@@ -43,13 +44,13 @@ class Item {
 }
 
 const items = new ItemsList ();
-const catalog = document.querySelector('.catalog');
 items.fetchItems().then(() => {
-  catalog.innerHTML = items.render();
+  items.catalog.innerHTML = items.render();
 });
 
 class BasketList  {
   constructor() {
+    this.basketOut = document.querySelector('#basket');
     this.basket = [];
 
     this._output = null;
@@ -76,7 +77,7 @@ class BasketList  {
     }
     //если нет добавляет товар в корзину
     this.addItem(art);
-    return basketOut.innerHTML = this.render();
+    return this.basketOut.innerHTML = this.render();
   }
 
   //добавляет новый товар в корзину
@@ -145,7 +146,7 @@ class BasketList  {
     fetch(`/cart/${id}`, {
       method: 'DELETE',
     }).then(response => response.json());
-    return basketOut.innerHTML = this.render()
+    return this.basketOut.innerHTML = this.render()
   }
 
   //передает необходимые параметры для вывода корзины на страницу
@@ -198,19 +199,15 @@ class ItemBasket extends  Item{
 
 //создание корзины, запрос содержимого корзины с сервера
 const basket = new BasketList();
-const basketOut = document.querySelector('#basket');
 basket.fetchBasket().then(() => {
   console.log(basket);
   if (basket !== []) {
-    basketOut.innerHTML = basket.render();
+    basket.basketOut.innerHTML = basket.render();
     basket.outResult();
-    basketOut.after(basket._output);
+    basket.basketOut.after(basket._output);
   }
 });
 
-// const basket = new BasketList();
-// const basketOut = document.querySelector('#basket');
-//
 //слушатель событий в блоке .catalog на кнопку "добавить"
 document.querySelector('.catalog').addEventListener('click', (event) => {
   if (event.target.classList.contains('catalog__item_button')) {
@@ -218,7 +215,7 @@ document.querySelector('.catalog').addEventListener('click', (event) => {
       if (+event.target.parentNode.dataset.art === key.id) {
         basket.checkItems(key);
         basket.outResult();
-        basketOut.after(basket._output);
+        basket.basketOut.after(basket._output);
       }
     }
   }
@@ -231,7 +228,7 @@ document.getElementById('basket').addEventListener('click', (event) => {
       if (+event.target.parentNode.dataset.art === key.id) {
         basket.checkItems(key);
         basket.outResult();
-        basketOut.after(basket._output);
+        basket.basketOut.after(basket._output);
       }
     }
   } else if (event.target.classList.contains('diminish')){
@@ -239,10 +236,10 @@ document.getElementById('basket').addEventListener('click', (event) => {
       if (+event.target.parentNode.dataset.art === key.id) {
         const subtotal = basket.addQuantityDiminish(key.id);
         if (subtotal !== false) {
-          basketOut.innerHTML = subtotal;
+          basket.basketOut.innerHTML = subtotal;
         }
         basket.outResult();
-        basketOut.after(basket._output);
+        basket.basketOut.after(basket._output);
       }
     }
   }
