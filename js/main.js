@@ -4,6 +4,7 @@
 при помощи команд
 npm i -g json-server
 json-server --watch db.json --port 3012 --static ./
+все ок
 */
 class ItemsList  {
   constructor() {
