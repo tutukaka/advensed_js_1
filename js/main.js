@@ -200,7 +200,6 @@ class ItemBasket extends  Item{
 //создание корзины, запрос содержимого корзины с сервера
 const basket = new BasketList();
 basket.fetchBasket().then(() => {
-  console.log(basket);
   if (basket !== []) {
     basket.basketOut.innerHTML = basket.render();
     basket.outResult();
