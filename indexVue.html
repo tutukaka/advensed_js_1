@@ -19,13 +19,18 @@
         <li class="menu_list"><a class="menu_list_link" href="#">Ссылка 3</a></li>
         <li class="menu_list"><a class="menu_list_link" href="#">Ссылка 4</a></li>
     </ul>
-    <button class="btn-cart button" type="button">Корзина</button>
+    <div id="btn" class="btn">
+        <button class="btn_cart button" type="button">Корзина</button>
+        <div v-if="test() > 0" class="btn_cart_out flex">{{ test() }}</div>
+    </div>
 </header>
 <main>
     <div id="root">
         <div class="root__search">
-            <input class="root__search_input"  type="text" v-model="query" name="query" placeholder="Поиск в каталоге">
-            <button class="button root__search_button" @click="handleSearchClick">Поиск</button>
+            <input class="root__search_input"  type="text" v-model="query"
+                   name="query" placeholder="Поиск в каталоге">
+            <button class="button root__search_button"
+                    @click="handleSearchClick">Поиск</button>
         </div>
         <h2 class="root__header">Каталог товаров </h2>
     <div id="catalog" class="catalog container flex bxbb">
@@ -34,7 +39,8 @@
             <img class="catalog__item_img" :src="`images/${item.img}`" alt="photo">
             <h3 class="catalog__item_text_h3">{{ item.title }}</h3>
             <p class="catalog__item_text_p">цена: {{ item.price }}р</p>
-            <button @click="handleBuyClick(item)" class="button catalog__item_button" type="button">добавить</button></div>
+            <button @click="handleBuyClick(item)" class="button catalog__item_button"
+                    type="button">добавить</button></div>
     </div>
         <h2 class="root__header">Корзина</h2>
     <div id="basket" class="basket flex bxbb">
@@ -42,10 +48,13 @@
             <img class="basket__item_img"  :src="`images/${cart.img}`" alt="photo">
             <h3  class="basket__item_text_h3">{{ cart.title }}</h3>
             <p class="basket__item_text_p">цена: {{ cart.price }}р</p>
-            <button class="button basket_button" @click="handleBuyClick(cart)" type="button">+</button>
+            <button class="button basket_button" @click="handleBuyClick(cart)"
+                    type="button">+</button>
             <div class="quantity_out">{{ cart.quantity }}</div>
-            <button class="button basket_button" @click="addQuantityDiminish(cart.id)" type="button">-</button>
-            <button class="button basket_button basket_button_delete" @click="handleDeleteClick(cart.id)" type="button">x</button>
+            <button class="button basket_button" @click="addQuantityDiminish(cart.id)"
+                    type="button">-</button>
+            <button class="button basket_button basket_button_delete"
+                    @click="handleDeleteClick(cart.id)" type="button">x</button>
         </div>
     </div>
         <div class="output container">

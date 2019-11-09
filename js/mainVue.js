@@ -96,3 +96,14 @@ const app = new Vue({
         }
     }
 });
+const headers = new Vue({
+    el: '#btn',
+    data: {
+    },
+    methods:{
+        test(){
+           return app.basket.length
+        }
+    }
+
+});
