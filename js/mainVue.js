@@ -31,6 +31,7 @@ const app = new Vue({
                 }
             }
             //если нет добавляет товар в корзину
+            item.quantity = 1;
             this.basket.push(item);
             return fetch(`cart`, {
                 method: 'POST',
@@ -70,9 +71,9 @@ const app = new Vue({
         handleDeleteClick(id) {
             fetch(`/cart/${id}`, {
                 method: 'DELETE',}).then(() => {
+                console.log(this.basket = this.basket.filter((item) => item.id !== id));
                 this.basket = this.basket.filter((item) => item.id !== id);
             });
-
         }
     },
     mounted() {
@@ -88,9 +89,6 @@ const app = new Vue({
             .then((cart) => {
                 this.basket = cart;
             });
-        console.log(this.items);
-        console.log(this.filteredItems);
-
     },
     computed: {
         total() {
