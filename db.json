@@ -35,13 +35,6 @@
       "title": "Компьютерная мышь",
       "price": 400,
       "img": "mouse.jpg",
-      "quantity": 3
-    },
-    {
-      "id": 22563,
-      "title": "Notebook",
-      "price": 20000,
-      "img": "notebook.jpg",
       "quantity": 1
     },
     {
@@ -56,6 +49,13 @@
       "title": "Gamepad",
       "price": 4500,
       "img": "gamepad.jpg",
+      "quantity": 1
+    },
+    {
+      "id": 22563,
+      "title": "Notebook",
+      "price": 20000,
+      "img": "notebook.jpg",
       "quantity": 1
     }
   ]

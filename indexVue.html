@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>-->
+    <script src="./js/mainVue.js" defer></script>
+</head>
+<body class="container">
+<header class="flex">
+    <div class="logo flex">
+        <a class="logo_a flex" href="#">logo</a>
+    </div>
+    <ul class="flex">
+        <li class="menu_list"><a class="menu_list_link" href="#">Ссылка 1</a></li>
+        <li class="menu_list"><a class="menu_list_link" href="#">Ссылка 2</a></li>
+        <li class="menu_list"><a class="menu_list_link" href="#">Ссылка 3</a></li>
+        <li class="menu_list"><a class="menu_list_link" href="#">Ссылка 4</a></li>
+    </ul>
+    <div id="btn" class="btn">
+        <button class="btn_cart button" type="button">Корзина</button>
+        <div v-if="test() > 0" class="btn_cart_out flex">{{ test() }}</div>
+    </div>
+</header>
+<main>
+    <div id="root">
+        <div class="root__search">
+            <input class="root__search_input"  type="text" v-model="query"
+                   name="query" placeholder="Поиск в каталоге">
+            <button class="button root__search_button"
+                    @click="handleSearchClick">Поиск</button>
+        </div>
+        <h2 class="root__header">Каталог товаров </h2>
+    <div id="catalog" class="catalog container flex bxbb">
+        <p v-if="filteredItems.length === 0">{{ nothingFound }}</p>
+        <div  v-for="item in filteredItems" class="catalog__item bxbb">
+            <img class="catalog__item_img" :src="`images/${item.img}`" alt="photo">
+            <h3 class="catalog__item_text_h3">{{ item.title }}</h3>
+            <p class="catalog__item_text_p">цена: {{ item.price }}р</p>
+            <button @click="handleBuyClick(item)" class="button catalog__item_button"
+                    type="button">добавить</button></div>
+    </div>
+        <h2 class="root__header">Корзина</h2>
+    <div id="basket" class="basket flex bxbb">
+        <div v-for="cart in basket" class="basket__item bxbb">
+            <img class="basket__item_img"  :src="`images/${cart.img}`" alt="photo">
+            <h3  class="basket__item_text_h3">{{ cart.title }}</h3>
+            <p class="basket__item_text_p">цена: {{ cart.price }}р</p>
+            <button class="button basket_button" @click="handleBuyClick(cart)"
+                    type="button">+</button>
+            <div class="quantity_out">{{ cart.quantity }}</div>
+            <button class="button basket_button" @click="addQuantityDiminish(cart.id)"
+                    type="button">-</button>
+            <button class="button basket_button basket_button_delete"
+                    @click="handleDeleteClick(cart.id)" type="button">x</button>
+        </div>
+    </div>
+        <div class="output container">
+            <p>Общая стоимость товаров: {{ total }} рублей</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>
