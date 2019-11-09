@@ -31,17 +31,17 @@
   ],
   "cart": [
     {
-      "id": 24526,
-      "title": "Gamepad",
-      "price": 4500,
-      "img": "gamepad.jpg",
-      "quantity": 2
-    },
-    {
       "id": 21566,
       "title": "Компьютерная мышь",
       "price": 400,
       "img": "mouse.jpg",
+      "quantity": 3
+    },
+    {
+      "id": 22563,
+      "title": "Notebook",
+      "price": 20000,
+      "img": "notebook.jpg",
       "quantity": 1
     },
     {
@@ -49,6 +49,13 @@
       "title": "Keyboard",
       "price": 5000,
       "img": "keyboard.jpg",
+      "quantity": 1
+    },
+    {
+      "id": 24526,
+      "title": "Gamepad",
+      "price": 4500,
+      "img": "gamepad.jpg",
       "quantity": 1
     }
   ]

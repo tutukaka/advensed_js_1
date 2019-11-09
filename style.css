@@ -16,6 +16,7 @@ a {
 }
 
 .button {
+  height: 20px;
   border-radius: 10px;
   transform: none;
   box-shadow: none;
@@ -50,9 +51,25 @@ header {
   margin-right: 30px;
 }
 
+.root__search {
+  margin: 20px 0 0 10px;
+}
+.root__search_button {
+  height: 22px;
+  width: 55px;
+}
+.root__search_input {
+  padding-left: 10px;
+  border-radius: 10px;
+  width: 200px;
+  height: 22px;
+}
+.root__header {
+  margin: 40px 0;
+}
+
 .catalog, .basket {
   justify-content: space-around;
-  padding-top: 40px;
 }
 .catalog__item, .basket__item {
   width: 200px;
@@ -136,14 +153,17 @@ header {
 }
 
 .basket {
-  border: 2px solid darkblue;
-  margin-top: 40px;
   margin-bottom: 40px;
-  padding-bottom: 40px;
 }
 .basket_button {
   width: 32px;
   margin: -4px 0;
+}
+.basket_button_delete {
+  background-color: red;
+  width: 15px;
+  height: 18px;
+  margin-left: 70px;
 }
 
 .output {
@@ -158,10 +178,6 @@ header {
   width: 30px;
   float: right;
   display: contents;
-}
-
-#text {
-  width: 300px;
 }
 
 /*# sourceMappingURL=style.css.map */

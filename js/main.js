@@ -4,11 +4,10 @@
 при помощи команд
 npm i -g json-server
 json-server --watch db.json --port 3012 --static ./
-все ок
 */
 class ItemsList  {
   constructor() {
-    this.catalog = document.querySelector('.catalog');
+    this.catalog = document.querySelector('#catalog');
     this.items = [];
   }
 
@@ -113,7 +112,7 @@ class BasketList  {
           this.renderQuantity(i, art);
           return false
         } else if (confirm('Вы действительно хотите удалить товар из корзины?')) {
-          return this.delete (i, art);
+          return this.delete (art, i);
         } else {
           return false;
         }
@@ -132,7 +131,7 @@ class BasketList  {
     })
   }
 
-  renderQuantity(i, art){
+  renderQuantity(art, i){
     const quantityOut = document.getElementsByClassName('quantity_out');
     for (let k = 0; k < quantityOut.length; k++) {
       if (+quantityOut[k].parentNode.dataset.art === art) {
@@ -142,7 +141,7 @@ class BasketList  {
   }
 
   //удаляет товар из корзины, с сервера, со страницы
-  delete(j, id){
+  delete(id, j){
     this.basket.splice(j, 1);
     fetch(`/cart/${id}`, {
       method: 'DELETE',
@@ -244,3 +243,6 @@ document.getElementById('basket').addEventListener('click', (event) => {
     }
   }
 });
+
+const app = new Vue();
+console.log(app);
